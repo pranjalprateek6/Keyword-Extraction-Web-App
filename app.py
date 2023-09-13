@@ -95,18 +95,18 @@ def main():
         for keyword in filtered_keywords:
             st.write(keyword)
 
-       if st.button("Save Keywords to File"):
-        with io.StringIO() as output_file:
-            for keyword in filtered_keywords:
+        if st.button("Save Keywords to File"):
+         with io.StringIO() as output_file:
+             for keyword in filtered_keywords:
                 output_file.write(keyword + "\n")
         
-        output_file.seek(0)  # Reset the stream position to the beginning
+         output_file.seek(0)  # Reset the stream position to the beginning
 
-        st.download_button(
-            label="Download Keywords File",
-            data=output_file.read().encode("utf-8"),  # Encode as bytes
-            file_name="extracted_keywords.txt",
-            key="download-button",
-        )
+         st.download_button(
+             label="Download Keywords File",
+             data=output_file.read().encode("utf-8"),  # Encode as bytes
+             file_name="extracted_keywords.txt",
+             key="download-button",
+         )
 if __name__ == "__main__":
     main()
