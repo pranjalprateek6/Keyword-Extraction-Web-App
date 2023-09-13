@@ -102,10 +102,10 @@ def main():
                     output_file.write(keyword + "\n")
                     
             st.download_button(
-            label="Download Keywords File",
-            data=output_file.getvalue(),
-            file_name="extracted_keywords.txt",
-            key="download-button",
-
+                label="Download Keywords File",
+                data=output_file.getvalue(),
+                file_name="extracted_keywords.txt",
+                key="download-button",
+            )
 if __name__ == "__main__":
     main()
