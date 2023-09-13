@@ -96,18 +96,20 @@ def main():
             st.write(keyword)
 
         output_file = io.StringIO()  # Define the output_file here
-
-        if st.button("Save Keywords to File"):
-            with output_file:
-                for keyword in filtered_keywords:
-                    output_file.write(keyword + "\n")
+        with output_file:
+            for keyword in filtered_keywords:
+                output_file.write(keyword + "\n")
 
         st.write("Download the file below:")
-        st.download_button(
-            label="Download Keywords File",
-            data=output_file.getvalue(),
-            file_name="extracted_keywords.txt",
-            key="download-button",
-         )
+        st.markdown(get_binary_file_downloader_html("extracted_keywords.txt", "Download Keywords File"), unsafe_allow_html=True)
+
 if __name__ == "__main__":
     main()
+
+# Function to generate a download link for binary files
+def get_binary_file_downloader_html(file_path, file_label):
+    with open(file_path, 'rb') as file:
+        data = file.read()
+    b64 = base64.b64encode(data).decode()
+    href = f'<a href="data:application/octet-stream;base64,{b64}" download="{file_path}" target="_blank">{file_label}</a>'
+    return href
