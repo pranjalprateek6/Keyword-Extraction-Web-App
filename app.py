@@ -87,32 +87,32 @@ def main():
 
            keywords = extract_keywords(text)
 
-        filtered_keywords = clean_and_filter_keywords(keywords)
+            filtered_keywords = clean_and_filter_keywords(keywords)
 
-        st.subheader("File Contents:")
-        st.write(text)
+            st.subheader("File Contents:")
+            st.write(text)
 
-        st.subheader("Extracted Keywords:")
-        for keyword in filtered_keywords:
-            st.write(keyword)
+            st.subheader("Extracted Keywords:")
+            for keyword in filtered_keywords:
+                st.write(keyword)
 
-        if st.button("Download Keywords File"):
-            # Prepare the content of the keywords file
-            keywords_content = "\n".join(filtered_keywords)
+            if st.button("Download Keywords File"):
+                # Prepare the content of the keywords file
+                keywords_content = "\n".join(filtered_keywords)
 
-            # Set up the file name and content type for download
-            file_name = "extracted_keywords.txt"
-            mime_type = "text/plain"
+                # Set up the file name and content type for download
+                file_name = "extracted_keywords.txt"
+                mime_type = "text/plain"
 
-            # Create a dictionary with the data and file info for download
-            download_data = {
-                "Content": keywords_content,
-                "Filename": file_name,
-                "MIMEType": mime_type,
-            }
+                # Create a dictionary with the data and file info for download
+                download_data = {
+                    "Content": keywords_content,
+                    "Filename": file_name,
+                    "MIMEType": mime_type,
+                }
 
-            # Create a download link
-            st.download_button("Download Keywords", **download_data)
+                # Create a download link
+                st.download_button("Download Keywords", **download_data)
 
 if __name__ == "__main__":
     main()
