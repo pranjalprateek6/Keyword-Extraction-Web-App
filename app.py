@@ -100,19 +100,12 @@ def main():
             # Prepare the content of the keywords file
             keywords_content = "\n".join(filtered_keywords)
 
-            # Set up the file name and content type for download
+            # Set up the file name for download
             file_name = "extracted_keywords.txt"
-            mime_type = "text/plain"
 
-            # Create a dictionary with the data and file info for download
-            download_data = {
-                "Content": keywords_content,
-                "Filename": file_name,
-                "MIMEType": mime_type,
-            }
-
-            # Create a download link
-            st.download_button("Download Keywords", **download_data)
+            # Create a download link for the keywords file
+            href = f"data:text/plain;charset=utf-8,{keywords_content.encode('utf-8').decode('latin-1')}"
+            st.markdown(f'<a href="{href}" download="{file_name}">Click here to download the keywords file</a>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
