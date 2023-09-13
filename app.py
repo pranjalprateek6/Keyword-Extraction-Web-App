@@ -12,6 +12,11 @@ import re
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+    
 def extract_keywords(text):
     r = Rake()
     r.extract_keywords_from_text(text)
