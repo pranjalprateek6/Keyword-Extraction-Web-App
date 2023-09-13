@@ -100,11 +100,12 @@ def main():
              for keyword in filtered_keywords:
                 output_file.write(keyword + "\n")
 
-         st.download_button(
-             label="Download Keywords File",
-             data=output_file.read().encode("utf-8"), 
-             file_name="extracted_keywords.txt",
-             key="download-button",
+        st.write("Download the file below:")
+        st.download_button(
+            label="Download Keywords File",
+            data=output_file.getvalue(),
+            file_name="extracted_keywords.txt",
+            key="download-button",
          )
 if __name__ == "__main__":
     main()
