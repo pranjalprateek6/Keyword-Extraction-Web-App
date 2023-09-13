@@ -8,6 +8,7 @@ from PyPDF2 import PdfReader
 import docx
 from pptx import Presentation
 import re
+import base64
 
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
