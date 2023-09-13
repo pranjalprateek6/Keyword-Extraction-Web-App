@@ -95,10 +95,12 @@ def main():
         for keyword in filtered_keywords:
             st.write(keyword)
 
+        output_file = io.StringIO()  # Define the output_file here
+
         if st.button("Save Keywords to File"):
-         with io.StringIO() as output_file:
-             for keyword in filtered_keywords:
-                output_file.write(keyword + "\n")
+            with output_file:
+                for keyword in filtered_keywords:
+                    output_file.write(keyword + "\n")
 
         st.write("Download the file below:")
         st.download_button(
