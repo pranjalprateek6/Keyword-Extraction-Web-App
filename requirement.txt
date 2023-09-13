@@ -1,7 +1,0 @@
-streamlit==1.26.0
-nltk==3.8.1
-rake-nltk==1.0.6
-PyPDF2==3.0.1
-docx==0.2.4
-docx2txt==0.8
-python-pptx==0.6.22
