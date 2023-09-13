@@ -100,7 +100,12 @@ def main():
             with open("extracted_keywords.txt", "w") as output_file:
                 for keyword in filtered_keywords:
                     output_file.write(keyword + "\n")
-            st.success("Keywords saved to 'extracted_keywords.txt'.")
+                    
+            st.download_button(
+            label="Download Keywords File",
+            data=output_file.getvalue(),
+            file_name="extracted_keywords.txt",
+            key="download-button",
 
 if __name__ == "__main__":
     main()
