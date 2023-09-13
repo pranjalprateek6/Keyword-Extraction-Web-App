@@ -85,7 +85,7 @@ def main():
             st.write("Unsupported file type. Please upload a PDF, DOCX, PPTX, or TXT file.")
             return
 
-        keywords = extract_keywords(text)
+           keywords = extract_keywords(text)
 
         filtered_keywords = clean_and_filter_keywords(keywords)
 
@@ -96,21 +96,23 @@ def main():
         for keyword in filtered_keywords:
             st.write(keyword)
 
-        output_file = io.StringIO()  # Define the output_file here
-        with output_file:
-            for keyword in filtered_keywords:
-                output_file.write(keyword + "\n")
+        if st.button("Download Keywords File"):
+            # Prepare the content of the keywords file
+            keywords_content = "\n".join(filtered_keywords)
 
-        st.write("Download the file below:")
-        st.markdown(get_binary_file_downloader_html("extracted_keywords.txt", "Download Keywords File"), unsafe_allow_html=True)
+            # Set up the file name and content type for download
+            file_name = "extracted_keywords.txt"
+            mime_type = "text/plain"
+
+            # Create a dictionary with the data and file info for download
+            download_data = {
+                "Content": keywords_content,
+                "Filename": file_name,
+                "MIMEType": mime_type,
+            }
+
+            # Create a download link
+            st.download_button("Download Keywords", **download_data)
 
 if __name__ == "__main__":
     main()
-
-# Function to generate a download link for binary files
-def get_binary_file_downloader_html(file_path, file_label):
-    with open(file_path, 'rb') as file:
-        data = file.read()
-    b64 = base64.b64encode(data).decode()
-    href = f'<a href="data:application/octet-stream;base64,{b64}" download="{file_path}" target="_blank">{file_label}</a>'
-    return href
