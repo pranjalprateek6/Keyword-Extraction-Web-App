@@ -85,9 +85,9 @@ def main():
             st.write("Unsupported file type. Please upload a PDF, DOCX, PPTX, or TXT file.")
             return
 
-           keywords = extract_keywords(text)
+        keywords = extract_keywords(text)
 
-            filtered_keywords = clean_and_filter_keywords(keywords)
+        filtered_keywords = clean_and_filter_keywords(keywords)
 
             st.subheader("File Contents:")
             st.write(text)
